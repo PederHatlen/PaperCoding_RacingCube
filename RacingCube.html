@@ -14,15 +14,17 @@
         <body>
             <canvas width="600" height="600" id="c"></canvas>
             <script>
+                //Variable decleration
                 let canvasEL = document.getElementById("c");
-                let ctx = canvasEL.getContext("2d");
-                ctx.fillStyle = "#ff0000";
+                let ctx = canvasEL.getContext("2d"); // wrote "getDrawingContext"
+                ctx.fillStyle = "#ff0000"; // Not needed, originaly "ctx.fillColor("#ff0000")"
 
                 let end = 500;
                 let pos = 0;
                 let sizeX = 25;
                 let sizeY = 25;
                 
+                // Code for setting canvas width/height
                 function setup(){
                     canvasEL.width = window.innerWidth;
                     canvasEL.height = window.innerHeight;
@@ -30,6 +32,7 @@
                 }
                 window.onresize = setup;
 
+                // Keypress, increment Cube pos by 1, win detection and draw calls
                 document.onkeydown = function (e){
                     console.log(e.key)
                     if(e.key == "ArrowLeft" && pos > 0){pos -= 1;}
@@ -39,6 +42,7 @@
                     draw();
                 }
 
+                // Draw function, clear canvas, draw finnish-line, draw cube
                 function draw(){
                     ctx.fillStyle = "#fff";
                     ctx.fillRect(0, 0, canvasEL.width, canvasEL.height);
@@ -49,7 +53,7 @@
                     ctx.fillStyle = "#000";
                     ctx.fillRect(pos, 12, sizeX, sizeY);
                 }
-                setup();
+                setup(); // Calling the settup function, because browser doesn't call resize on init
             </script>
         </body>
     </html>
